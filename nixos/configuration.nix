@@ -1,6 +1,8 @@
+
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
+
 
 { config, pkgs, ... }:
 
@@ -70,7 +72,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -124,37 +126,117 @@
   # Uncomment the next 2 lines if you're not using GNOME
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
+  # xdg = {
+  #   desktopFileName = {
+  #     ghostty = pkgs.makeDesktopEntry {
+  #       name = "Ghostty";
+  #       exec = "${pkgs.ghostty}/bin/ghostty --gtk-titlebar=false";
+  #       icon = "ghostty";
+  #       type = "Application";
+  #       terminal = false;
+  #     };
+  #   };
+  # };
 
-
+  # enable flatpack
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
-  	pkgs.linux-router
-  	vim
+
+	#FIX: libudev seems to be handled by systemd
+  	#NOTE: bunch of crap for the shadps4 emulator to work
+		# systemd
+		# libudev-zero
+		# udev
+		# clang
+		#   		alsa-lib
+		#   		pulseaudio
+		#   		openal
+		#   		openssl
+		#   		zlib
+		# #FIX: we got a warning concerning the SLD2
+		#   		SDL2
+		#   		jack2
+		#   		sndio
+		#   		qt6.qtbase
+		#   		qt6.qttools
+		#   		qt6.qtmultimedia
+		#   		vulkan-headers
+		#   		vulkan-validation-layers
+		#   		libedit
+		#   		libevdev
+
+  	# hotspot
+  		# linux-router
+	# disk drivers
+	# ntfs3g
+	# cmd tools
+	porsmo
+	libnotify
+	fd # simple fast alternative to find
+	eza # ls with steroids
+	macchina
+	tldr # Simplified community driven man pages
+	bat # cat on steroid
+	fzf # your local fuzzyfinder
 	unzip
-	luajitPackages.luarocks_bootstrap #luarocks
-	tree-sitter
-	nodejs_23
-	xclip
-	python3
-	gnumake
-	gcc
-	zig
+	zip
   	wget
-	neovim
-	ripgrep
+	#Linters
+	# Languages
+	zig
+	python3
 	lua
-	alacritty
-	libclang
+	luajitPackages.luarocks_bootstrap #luarocks
+	# nodejs_23
+	# recording
+	obs-studio
+	# browser
+	brave
+	# google-chrome
+	# essential GUI apps
+	telegram-desktop
 	spotify
-	pkgs.discord
-	google-chrome
-	zoxide
-    	pkgs.plemoljp-nf # nerdfonts for neovim icons
+	discord
+	foliate
 	obsidian
+	# terminals
+	# blackbox
+	alacritty
+	ghostty
+	# Fonts
+    	pkgs.plemoljp-nf # nerdfonts for neovim icons
+	nerdfonts
+	# Common
+	zoxide
+	# editors
+	zed-editor
+	neovim
+	# GUI for neovim
+	neovide
+	# needed by telescope
+	ripgrep
+	xclip
+	tree-sitter
+  	vim # not sure lol
+	# Virtualization
 	docker
-	pkgs.foliate
+	# C Compilers
+	gcc
+	cmake
+	gnumake
   ];
+
+  # FIX: did not work
+  environment.etc."xdg/ghostty.desktop".text = ''
+    [Desktop Entry]
+    name=Ghostty
+    exec=${pkgs.ghostty}/bin/ghostty --gtk-titlebar=false
+    icon=ghostty
+    type=Application
+    terminal=false
+  '';
+
 
 # docker home-manager
 #   virtualisation.docker.rootless = {
@@ -163,16 +245,6 @@
 # 	data-root = "~/Desktop/docker-data/";
 # };
 
-
-services.create_ap = {
-  enable = true;
-  settings = {
-    INTERNET_IFACE = "eth0";
-    WIFI_IFACE = "wlan0";
-    SSID = "My Wifi Hotspot";
-    PASSPHRASE = "12345678";
-  };
-};
 
   programs.zsh = {
 	  enable = true;
@@ -183,8 +255,8 @@ services.create_ap = {
 
 	  shellAliases = {
 	    ll = "ls -l";
-	    update = "sudo nixos-rebuild switch";
-	    conf = "sudo nvim /etc/nixos/configuration.nix";
+	    # update = "sudo nixos-rebuild switch";
+	    # conf = "sudo nvim /etc/nixos/configuration.nix";
 	    hardclean = "sudo nix-collect-garbage; sudo nix-collect-garbage -d; update";
 	  };
 	  histSize = 10000;
