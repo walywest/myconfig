@@ -8,7 +8,15 @@ return {
     },
 
     config = function()
-        require('telescope').setup({})
+        require("telescope").setup {
+            pickers = {
+                live_grep = {
+                    additional_args = function(opts)
+                        return { "--hidden" }
+                    end
+                },
+            },
+        }
 
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>pf', builtin.find_files, {})

@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "[n", ":noh<CR>")
@@ -45,10 +44,10 @@ vim.keymap.set({ "n" }, "`-", ":split<CR>:terminal<CR>i")
 
 
 --//NOTE: REMAPS FOR BETTER TAB MANAGEMENT
-vim.keymap.set({ "n" }, "`c", ":tabnew<CR>")
+vim.keymap.set({ "n" }, "`t", ":tabnew<CR>:Telescope find_files<CR>")
 vim.keymap.set({ "n" }, "`l", ":tabnext<CR>")
 vim.keymap.set({ "n" }, "`<BS>", ":tabprevious<CR>")
-vim.keymap.set({"n"}, "`<leader>", "gt")
+vim.keymap.set({ "n" }, "`<leader>", "gt")
 
 local function my_dynamic_mapping(count)
     -- Your logic here using the count
@@ -60,12 +59,40 @@ vim.keymap.set({ 'n', 'v' }, ']<count>', '', { noremap = true, expr = true }, fu
     return my_dynamic_mapping(count)
 end)
 
---//NOTE: 7ta nchofo liha chi tkhrija
---vim.keymap.set({"n"}, "<leader>;", ":q<CR>")
 
---local function cmd(command)
---    return table.concat({ '<Cmd>', command, '<CR>' })
---end
-
+--NOTE: next 2 are an exception form autocmd TabNewEntered ==>
+--
+vim.keymap.set("n", "`m", function()
+    if vim.g.neovide == false then
+        vim.g.manual_action = true -- Set a marker
+        vim.cmd(":tabnew<CR>")     -- Execute the desired action
+        vim.g.manual_action = nil  -- Reset the marker
+    end
+    vim.cmd(":Mason")              -- Execute the desired action
+end)
+vim.keymap.set("n", "`g", function()
+    vim.g.manual_action = true -- Set a marker
+    vim.cmd(":tabnew<CR>")     -- Execute the desired action
+    vim.g.manual_action = nil  -- Reset the marker
+    vim.cmd(":Git")            -- Execute the desired action
+end)
 --//NOTE: REMAPS FOR NVIMTREE
-vim.keymap.set({"n"}, "<leader>o", ":NvimTreeFindFile<CR>")
+vim.keymap.set({ "n" }, "<leader>o", ":NvimTreeFindFile<CR>")
+
+-- NOTE: POMMODORO-NVIM
+-- local function pc(func)
+--     return ":lua require('pommodoro-clock')." .. func .. "<CR>"
+-- end
+-- p = {
+--     name = "Pommodoro",
+--     w = { pc('start("work")'), "Start Pommodoro" },
+--     s = { pc('start("short_break")'), "Short Break" },
+--     l = { pc('start("long_break")'), "Long Break" },
+--     p = { pc("toggle_pause()"), "Toggle Pause" },
+--     c = { pc("close()"), "Close" },
+-- }
+-- vim.keymap.set("n", "`pw", p.w[1])
+-- vim.keymap.set("n", "`ps", p.s[1])
+-- vim.keymap.set("n", "`pl", p.l[1])
+-- vim.keymap.set("n", "`pp", p.p[1])
+-- vim.keymap.set("n", "`pc", p.c[1])

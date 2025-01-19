@@ -29,7 +29,7 @@ return {
                 "lua_ls",
                 "clangd",
                 --"rust_analyzer",
-                --"tsserver",
+                -- "typescript"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -69,18 +69,38 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
+                { name = "copilot",   group_index = 2 },
+                { name = 'nvim_lsp',  group_index = 2 },
+                { name = 'luasnip',   group_index = 2 }, -- For luasnip users.
             }, {
                 { name = 'buffer' },
-            })
+            }),
+            sorting = {
+                priority_weight = 2,
+                comparators = {
+                    require("copilot_cmp.comparators").prioritize,
+
+                    -- Below is the default comparitor list and order for nvim-cmp
+                    cmp.config.compare.offset,
+                    -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+                    cmp.config.compare.exact,
+                    cmp.config.compare.score,
+                    cmp.config.compare.recently_used,
+                    cmp.config.compare.locality,
+                    cmp.config.compare.kind,
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.length,
+                    cmp.config.compare.order,
+                },
+            },
+
         })
 
         vim.diagnostic.config({
 
-            --//NOTE: tbh idk why added those too 
-                update_in_insert = true,
-                virtual_text = true,
+            --//NOTE: tbh idk why added those too
+            update_in_insert = true,
+            virtual_text = true,
 
             float = {
                 focusable = false,

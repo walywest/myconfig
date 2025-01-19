@@ -17,9 +17,9 @@ local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
-function R(name)
-    require("plenary.reload").reload_module(name)
-end
+-- function R(name)
+--     require("plenary.reload").reload_module(name)
+-- end
 
 autocmd('TextYankPost', {
     group = yank_group,
@@ -49,15 +49,19 @@ autocmd('LspAttach', {
     end
 })
 
-local tele = require('telescope.builtin')
+-- autocmd('TabNewEntered', {
+--     group = ThePrimeagenGroup,
+--     callback = function()
+--         -- if vim.g.manual_action then
+--         --     return
+--         -- end
+--         require('telescope.builtin').find_files()
+--     end
+-- })
+--
 
-autocmd('TabNewEntered', {
-    group = ThePrimeagenGroup,
-    callback = function()
-        tele.find_files()
-    end
-})
 
---vim.g.netrw_browse_split = 0
+
+vim.g.netrw_browse_split = 0
 --vim.g.netrw_banner = 0
 --vim.g.netrw_winsize = 25
