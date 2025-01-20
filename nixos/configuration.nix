@@ -188,14 +188,14 @@
 	python3
 	lua
 	luajitPackages.luarocks_bootstrap #luarocks
-	# nodejs_23
+	nodejs_23
 	# recording
 	obs-studio
 	# browser
 	brave
 	# google-chrome
 	# essential GUI apps
-	telegram-desktop
+	# telegram-desktop
 	spotify
 	discord
 	foliate
