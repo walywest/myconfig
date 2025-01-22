@@ -1,4 +1,3 @@
-
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -100,14 +99,14 @@
 
   # Install firefox.
   # programs.firefox.enable = true;
-  # Enable linked libraries packages
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-  	gtk3
-	nss
-	sqlite
-	libstdcxx5
-  ];
+  # Enable linked libraries packages (I dont think i needed that after all)
+	#  programs.nix-ld.enable = true;
+	#  programs.nix-ld.libraries = with pkgs; [
+	#  	gtk3
+	# nss
+	# sqlite
+	# libstdcxx5
+	#  ];
   #GIT
   programs.git = {
 	enable = true;
@@ -123,6 +122,7 @@
 
   # environment.homeBinInPath = true;
 
+  #Note: Another reason to use GNOME
   # Uncomment the next 2 lines if you're not using GNOME
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
@@ -138,38 +138,38 @@
   #   };
   # };
 
-  # enable flatpack
+  # enable flatpack currently only using zen_browser package
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
 
 	#FIX: libudev seems to be handled by systemd
-  	#NOTE: bunch of crap for the shadps4 emulator to work
-		# systemd
-		# libudev-zero
-		# udev
-		# clang
-		#   		alsa-lib
-		#   		pulseaudio
-		#   		openal
-		#   		openssl
-		#   		zlib
-		# #FIX: we got a warning concerning the SLD2
-		#   		SDL2
-		#   		jack2
-		#   		sndio
-		#   		qt6.qtbase
-		#   		qt6.qttools
-		#   		qt6.qtmultimedia
-		#   		vulkan-headers
-		#   		vulkan-validation-layers
-		#   		libedit
-		#   		libevdev
+  	#NOTE: bunch of crap that i needed for the shadps4 emulator to work
+	# systemd
+	# libudev-zero
+	# udev
+	# clang
+	#   		alsa-lib
+	#   		pulseaudio
+	#   		openal
+	#   		openssl
+	#   		zlib
+	# #FIX: we got a warning concerning the SLD2
+	#   		SDL2
+	#   		jack2
+	#   		sndio
+	#   		qt6.qtbase
+	#   		qt6.qttools
+	#   		qt6.qtmultimedia
+	#   		vulkan-headers
+	#   		vulkan-validation-layers
+	#   		libedit
+	#   		libevdev
 
-  	# hotspot
-  		# linux-router
+  	#NOTE: hotspot did not seem to work
+  	# linux-router
 	# disk drivers
-	# ntfs3g
+	# ntfs3g did not need that so much after all
 	# cmd tools
 	porsmo
 	libnotify
@@ -210,7 +210,7 @@
 	# Common
 	zoxide
 	# editors
-	zed-editor
+	# zed-editor
 	neovim
 	# GUI for neovim
 	neovide
@@ -227,17 +227,18 @@
 	gnumake
   ];
 
-  # FIX: did not work
-  environment.etc."xdg/ghostty.desktop".text = ''
-    [Desktop Entry]
-    name=Ghostty
-    exec=${pkgs.ghostty}/bin/ghostty --gtk-titlebar=false
-    icon=ghostty
-    type=Application
-    terminal=false
-  '';
+  # FIX: fuck all of that shit comment for now
+  # environment.etc."xdg/ghostty.desktop".text = ''
+  #   [Desktop Entry]
+  #   name=Ghostty
+  #   exec=${pkgs.ghostty}/bin/ghostty --gtk-titlebar=false
+  #   icon=ghostty
+  #   type=Application
+  #   terminal=false
+  # '';
+  #
 
-
+# NOTE: I don't remember why i needed this, not using docker for the moment
 # docker home-manager
 #   virtualisation.docker.rootless = {
 #   	enable = true;
