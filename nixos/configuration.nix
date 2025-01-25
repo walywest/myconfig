@@ -100,7 +100,7 @@
   # Install firefox.
   # programs.firefox.enable = true;
   # Enable linked libraries packages (I dont think i needed that after all)
-	#  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
 	#  programs.nix-ld.libraries = with pkgs; [
 	#  	gtk3
 	# nss
@@ -141,6 +141,10 @@
   # enable flatpack currently only using zen_browser package
   services.flatpak.enable = true;
 
+  # NOTE: should i add this ?
+  nix.settings.auto-optimise-store = true;
+
+
   environment.systemPackages = with pkgs; [
 
 	#FIX: libudev seems to be handled by systemd
@@ -170,6 +174,8 @@
   	# linux-router
 	# disk drivers
 	# ntfs3g did not need that so much after all
+	# debugging and profiling
+	pkgs.valgrind
 	# cmd tools
 	porsmo
 	libnotify
@@ -189,6 +195,11 @@
 	lua
 	luajitPackages.luarocks_bootstrap #luarocks
 	nodejs_23
+	# SDKs for mobile dev
+	pkgs.flutterPackages-source.v3_26
+	pkgs.android-studio
+	pkgs.android-tools
+	pkgs.telegram-desktop
 	# recording
 	obs-studio
 	# browser
@@ -210,7 +221,7 @@
 	# Common
 	zoxide
 	# editors
-	# zed-editor
+	zed-editor
 	neovim
 	# GUI for neovim
 	neovide
