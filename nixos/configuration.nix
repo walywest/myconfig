@@ -152,7 +152,6 @@
 	# systemd
 	# libudev-zero
 	# udev
-	# clang
 	#   		alsa-lib
 	#   		pulseaudio
 	#   		openal
@@ -191,12 +190,14 @@
 	#Linters
 	# Languages
 	zig
+	clang
 	python3
 	lua
 	luajitPackages.luarocks_bootstrap #luarocks
 	nodejs_23
 	# SDKs for mobile dev
-	pkgs.flutterPackages-source.v3_26
+	# pkgs.flutterPackages-source.v3_26
+	pkgs.flutter327
 	pkgs.android-studio
 	pkgs.android-tools
 	pkgs.telegram-desktop
