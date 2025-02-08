@@ -122,6 +122,8 @@
 
   # environment.homeBinInPath = true;
 
+  programs.kdeconnect.enable = true;
+
   #Note: Another reason to use GNOME
   # Uncomment the next 2 lines if you're not using GNOME
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -144,8 +146,14 @@
   # NOTE: should i add this ?
   nix.settings.auto-optimise-store = true;
 
+  # kubernetes
+  services.kubernetes.roles = ["master" "node"];
+  services.kubernetes.masterAddress = "localhost";
 
   environment.systemPackages = with pkgs; [
+  	# kubernetes
+	pkgs.kubectl
+
 
 	#FIX: libudev seems to be handled by systemd
   	#NOTE: bunch of crap that i needed for the shadps4 emulator to work
@@ -170,11 +178,15 @@
 	#   		libevdev
 
   	#NOTE: hotspot did not seem to work
-  	# linux-router
+	#  	linux-router
+	# wirelesstools
+	# iw
 	# disk drivers
 	# ntfs3g did not need that so much after all
 	# debugging and profiling
 	pkgs.valgrind
+	# terminal filemanager
+	pkgs.yazi-unwrapped
 	# cmd tools
 	porsmo
 	libnotify
@@ -190,24 +202,25 @@
 	#Linters
 	# Languages
 	zig
-	clang
 	python3
 	lua
 	luajitPackages.luarocks_bootstrap #luarocks
 	nodejs_23
 	# SDKs for mobile dev
-	# pkgs.flutterPackages-source.v3_26
 	pkgs.flutter327
 	pkgs.android-studio
-	pkgs.android-tools
-	pkgs.telegram-desktop
+	# 
 	# recording
 	obs-studio
 	# browser
 	brave
-	# google-chrome
+	google-chrome
+	# security
+	pkgs.vulnix
+	# Network
+	# pkgs.haskellPackages.hellnet
 	# essential GUI apps
-	# telegram-desktop
+	pkgs.telegram-desktop
 	spotify
 	discord
 	foliate
@@ -233,10 +246,15 @@
   	vim # not sure lol
 	# Virtualization
 	docker
-	# C Compilers
+	# Compilers and build tools
+	clang
 	gcc
+	#FIX: did not work
+	# pkgs.pkgconf
 	cmake
 	gnumake
+	#FIX: where to put this?
+	undollar
   ];
 
   # FIX: fuck all of that shit comment for now
@@ -289,6 +307,15 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+#   services.create_ap = {
+#   enable = true;
+#   settings = {
+#     INTERNET_IFACE = "eth0";
+#     WIFI_IFACE = "wlan0";
+#     SSID = "My Wifi Hotspot";
+#     PASSPHRASE = "12345678";
+#   };
+# };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
