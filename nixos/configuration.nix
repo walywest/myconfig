@@ -149,10 +149,12 @@
   # kubernetes
   services.kubernetes.roles = ["master" "node"];
   services.kubernetes.masterAddress = "localhost";
+  # services.kubernetes.apiserver.insecurePort = 8080;
+
 
   environment.systemPackages = with pkgs; [
   	# kubernetes
-	pkgs.kubectl
+	kubectl
 
 
 	#FIX: libudev seems to be handled by systemd
@@ -188,6 +190,7 @@
 	# terminal filemanager
 	pkgs.yazi-unwrapped
 	# cmd tools
+	lsof
 	porsmo
 	libnotify
 	fd # simple fast alternative to find
@@ -317,11 +320,6 @@
 #   };
 # };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
