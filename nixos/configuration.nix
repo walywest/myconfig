@@ -10,7 +10,7 @@
     [ # Include the results of the hardware scan.
       ./modules/all.nix
     ];
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]
   #AUTO-UPDATE
   system.autoUpgrade.enable = true;
 
@@ -99,7 +99,7 @@
 
   	#NOTE: hotspot did not seem to work
 	#  	linux-router
-	# wirelesstools
+	#   wirelesstools
 	# iw
 	# disk drivers
 	# ntfs3g did not need that so much after all
@@ -165,8 +165,6 @@
 	xclip
 	tree-sitter
   	vim # not sure lol
-	# Virtualization
-	docker
 	# Compilers and build tools
 	clang
 	gcc

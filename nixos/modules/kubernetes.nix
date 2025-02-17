@@ -1,10 +1,14 @@
-{pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  # kubernetes
-  services.kubernetes.roles = ["master" "node"];
-  services.kubernetes.masterAddress = "localhost";
-  # services.kubernetes.apiserver.insecurePort = 8080;
+  # resolve master hostname
+
+  # packages for administration tasks
   environment.systemPackages = with pkgs; [
-        kubectl
-    ];
+    kubectl
+  ];
+
+  services.kubernetes = {
+    roles = ["master" "node"];
+    masterAddress = "localhost";
+  };
 }
