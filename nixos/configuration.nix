@@ -10,7 +10,7 @@
     [ # Include the results of the hardware scan.
       ./modules/all.nix
     ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   #AUTO-UPDATE
   system.autoUpgrade.enable = true;
 
@@ -150,9 +150,9 @@
 	# blackbox
 	alacritty
 	ghostty
-	# Fonts
+	# #FIX: Fonts
 	plemoljp-nf # nerdfonts for neovim icons
-	nerdfonts
+	# nerd-fonts
 	# Common
 	zoxide
 	# editors
@@ -172,8 +172,6 @@
 	# pkgconf
 	cmake
 	gnumake
-	#FIX: where to put this?
-	undollar
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
