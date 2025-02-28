@@ -9,7 +9,7 @@
   ];
 
   services.kubernetes = {
-    roles = ["master" "node"];
+    # roles = ["master" "node"];
     # roles = ["master"];
     masterAddress = "localhost";
   };

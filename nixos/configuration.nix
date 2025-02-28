@@ -15,8 +15,21 @@
   system.autoUpgrade.enable = true;
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+  # TODO:
+  boot.loader = {
+    systemd-boot.enable = false;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
+    };
+    grub = {
+       efiSupport = true;
+       #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
+       device = "nodev";
+    };
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -97,6 +110,12 @@
   environment.systemPackages = with pkgs; [
 
 
+    # boot entries listing
+    efibootmgr
+    # disk utilities
+    gparted
+    # bootable usb solution
+    ventoy-full
 	# debugging and profiling
 	valgrind
 	# terminal filemanager
