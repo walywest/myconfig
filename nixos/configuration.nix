@@ -19,17 +19,31 @@
   # boot.loader.efi.canTouchEfiVariables = true;
   # TODO:
   boot.loader = {
-    systemd-boot.enable = false;
+    timeout = 5;
+
     efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
+      efiSysMountPoint = "/boot";
     };
+
     grub = {
-       efiSupport = true;
-       #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
-       device = "nodev";
+      enable = true;
+      # version = 2; #NOTE: old
+      
+      efiSupport = true;
+      efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
+      devices = [ "nodev" ];
+      extraEntriesBeforeNixOS = true;
+      extraEntries = ''
+        menuentry "Reboot" {
+          reboot
+        }
+        menuentry "Poweroff" {
+          halt
+        }
+      '';
     };
   };
+    #FIX:-----------
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
