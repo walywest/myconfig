@@ -1,16 +1,18 @@
 { config, pkgs, ... }:
 {
-  # resolve master hostname
-
-  # packages for administration tasks
   environment.systemPackages = with pkgs; [
     kubectl
-    # cri-o
   ];
 
-  services.kubernetes = {
-    roles = ["master" "node"];
-    # roles = ["master"];
-    masterAddress = "localhost";
-  };
+#NOTE: server
+    networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [ 6443 ];
+    networking.firewall.allowedUDPPorts = [ 6443 8080 ];
+    services.k3s = {
+        enable = false;
+        role = "server";
+        extraFlags = [
+            "--node-ip=192.168.1.9" 
+        ];
+    };
 }

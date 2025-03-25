@@ -6,5 +6,6 @@
         ./local.nix
         ./virtualization.nix
         ./sh.nix
+        ./scripts.nix
         ];
 }

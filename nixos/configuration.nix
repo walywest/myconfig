@@ -6,6 +6,7 @@
 { config, pkgs, ... }:
 
 {
+  # services.k3s.enable = true;
   imports =
     [ # Include the results of the hardware scan.
       ./modules/all.nix
@@ -27,12 +28,11 @@
 
     grub = {
       enable = true;
-      # version = 2; #NOTE: old
       
       efiSupport = true;
       efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
       devices = [ "nodev" ];
-      extraEntriesBeforeNixOS = true;
+      extraEntriesBeforeNixOS = false;
       extraEntries = ''
         menuentry "Reboot" {
           reboot
@@ -202,6 +202,11 @@
 	gnumake
     # NOTE: DISK USAGE STATISTICS
     libsForQt5.filelight
+    #NOTE: VMs images management/deployment/creation
+    vagrant
+    packer
+    # token generation
+    openssl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -2,7 +2,7 @@
 {
 
     virtualisation.docker.enable = true;
-# NOTE: I don't remember why i needed this, not using docker for the moment
+# NOTE:  to clearly see where docker stores its crap
 # docker home-manager
 #   virtualisation.docker.rootless = {
 #   	enable = true;
@@ -13,4 +13,10 @@
   # environment.systemPackages = with pkgs; [
   #       docker
   #   ]
+   #NOTE: VirtualBox- ->>
+   virtualisation.virtualbox.host.enable = true;
+   users.extraGroups.vboxusers.members = [ "Dumbledoor" ];
+   # NOTE: kvm is not compatible with Vbox at this kernel version 6.12.13
+   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+
 }
