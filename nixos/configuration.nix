@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   # services.k3s.enable = true;
@@ -95,9 +95,6 @@
     #  thunderbird
     ];
   };
-  # Install firefox.
-  # programs.firefox.enable = true;
-  #GIT
   programs.git = {
 	enable = true;
 	};
@@ -153,6 +150,7 @@
 	python3
 	lua
 	luajitPackages.luarocks_bootstrap #luarocks in3lbo lismak sa3tayn wana kan9lb 3liha b9
+    pnpm
 	nodejs_23
 	# SDKs for mobile dev
 	flutter327

@@ -16,7 +16,7 @@
    #NOTE: VirtualBox- ->>
    virtualisation.virtualbox.host.enable = true;
    users.extraGroups.vboxusers.members = [ "Dumbledoor" ];
-   # NOTE: kvm is not compatible with Vbox at this kernel version 6.12.13
+   # NOTE: kvm is not compatible with Vbox at this kernel version
    boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
 }
