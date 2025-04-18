@@ -1,17 +1,19 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-
-{ config, lib, pkgs, inputs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   # services.k3s.enable = true;
-  imports =
-    [ # Include the results of the hardware scan.
-      ./modules/all.nix
-    ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./modules/all.nix
+  ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   #AUTO-UPDATE
   system.autoUpgrade.enable = true;
 
@@ -28,10 +30,10 @@
 
     grub = {
       enable = true;
-      
+
       efiSupport = true;
       efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
-      devices = [ "nodev" ];
+      devices = ["nodev"];
       extraEntriesBeforeNixOS = false;
       extraEntries = ''
         menuentry "Reboot" {
@@ -43,7 +45,7 @@
       '';
     };
   };
-    #FIX:-----------
+  #FIX:-----------
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -76,7 +78,7 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-  
+
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
@@ -89,15 +91,15 @@
     useDefaultShell = true;
     isNormalUser = true;
     description = "Dumbledoor";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
   programs.git = {
-	enable = true;
-	};
+    enable = true;
+  };
 
   # programs.appimage.enable = true;
 
@@ -109,7 +111,7 @@
   programs.kdeconnect.enable = true;
   #Note: Another reason to use GNOME
   # Uncomment the next 2 lines if you're not using GNOME
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.config.common.default = "gtk";
 
   # enable flatpack currently only using zen_browser package
@@ -119,85 +121,86 @@
   nix.settings.auto-optimise-store = true;
 
   environment.systemPackages = with pkgs; [
-
-
     # boot entries listing
     efibootmgr
     # disk utilities
     gparted
     # bootable usb solution
     ventoy-full
-	# debugging and profiling
-	valgrind
-	# terminal filemanager
-	yazi-unwrapped
-	# cmd tools
-	lsof
-	porsmo
-	libnotify
-	fd # simple fast alternative to find
-	eza # ls with steroids
-	macchina
-	tldr # Simplified community driven man pages
-	bat # cat on steroid
-	fzf # your local fuzzyfinder
-	unzip
-	zip
-  	wget
-	#Linters
-	# Languages
-	zig
-	python3
-	lua
-	luajitPackages.luarocks_bootstrap #luarocks in3lbo lismak sa3tayn wana kan9lb 3liha b9
+    # debugging and profiling
+    valgrind
+    # terminal filemanager
+    yazi-unwrapped
+    # cmd tools
+    lsof
+    porsmo
+    libnotify
+    fd # simple fast alternative to find
+    eza # ls with steroids
+    macchina
+    tldr # Simplified community driven man pages
+    bat # cat on steroid
+    fzf # your local fuzzyfinder
+    unzip
+    zip
+    wget
+    #LSP
+    # basedpyright
+    # ruff-lsp
+    #Linters
+    # ruff
+    # Languages
+    zig
+    python3
+    lua
+    luajitPackages.luarocks_bootstrap #luarocks in3lbo lismak sa3tayn wana kan9lb 3liha b9
     pnpm
-	nodejs_23
-	# SDKs for mobile dev
-	flutter327
-	android-studio
-	# 
-	# recording
-	obs-studio
-	# browser
-	brave
-	google-chrome
-	# security
-	vulnix
-	# Network
-	# haskellPackages.hellnet
-	# essential GUI apps
-	telegram-desktop
-	spotify
-	discord
-	foliate
-	obsidian
-	# terminals
-	# blackbox
-	alacritty
-	ghostty
-	# #FIX: Fonts
-	plemoljp-nf # nerdfonts for neovim icons
-	# nerd-fonts
-	# Common
-	zoxide
-	# editors
-	# zed-editor
-	neovim
-	# GUI for neovim
-	neovide
-	# needed by telescope
-	ripgrep
-	xclip
-	tree-sitter
-  	vim # not sure lol
-	# Compilers and build tools
-	clang
-	gcc
+    nodejs_23
+    # SDKs for mobile dev
+    flutter327
+    android-studio
+    #
+    # recording
+    obs-studio
+    # browser
+    brave
+    google-chrome
+    # security
+    vulnix
+    # Network
+    # haskellPackages.hellnet
+    # essential GUI apps
+    telegram-desktop
+    spotify
+    discord
+    foliate
+    obsidian
+    # terminals
+    # blackbox
+    alacritty
+    ghostty
+    # Common
+    zoxide
+    # editors
+    # zed-editor
+    neovim
+    plemoljp-nf # nerdfonts for neovim icons
+    # nerd-fonts
+    # GUI for neovim
+    neovide
+    # needed by telescope
+    ripgrep
+    xclip
+    tree-sitter
+    vim # not sure lol
+    # Compilers and build tools
+    clang
+    gcc
     ninja
-	#FIX: did not work
-	# pkgconf
-	cmake
-	gnumake
+    #FIX: did not work
+    # pkgconf
+    cmake
+    gnumake
     # NOTE: DISK USAGE STATISTICS
     libsForQt5.filelight
     #NOTE: VMs images management/deployment/creation
@@ -219,16 +222,15 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-#   services.create_ap = {
-#   enable = true;
-#   settings = {
-#     INTERNET_IFACE = "eth0";
-#     WIFI_IFACE = "wlan0";
-#     SSID = "My Wifi Hotspot";
-#     PASSPHRASE = "12345678";
-#   };
-# };
-
+  #   services.create_ap = {
+  #   enable = true;
+  #   settings = {
+  #     INTERNET_IFACE = "eth0";
+  #     WIFI_IFACE = "wlan0";
+  #     SSID = "My Wifi Hotspot";
+  #     PASSPHRASE = "12345678";
+  #   };
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -237,5 +239,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

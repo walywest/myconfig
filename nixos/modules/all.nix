@@ -2,6 +2,7 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ./fhs.nix
         ./networking.nix
         ./kubernetes.nix
         ./local.nix
@@ -11,5 +12,7 @@
         ./custom_k3d.nix
         ./custom_helm.nix
         ./nixd.nix
+        #TODO:
+        # ./custom_helm.nix
         ];
 }

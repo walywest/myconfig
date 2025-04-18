@@ -5,7 +5,10 @@
     # networking.firewall.allowedUDPPorts = [ 6443 8080 ];
     # options.services.k3d.enable = true;
     services.k3d.enable = true;
+    #ISSUE:
+    # services.helm.enable = true;
     environment.systemPackages = with pkgs; [
+        kubernetes-helm
         kubectl
       ];
     services.k3s = {
