@@ -1,12 +1,12 @@
 # About this repo:
 This is my basic personal configuration files backup for a reproducible environment, somebody might find this helpful to get started with his own.
-# Normal config files:
-Just regular config files
-ps: for the moment nvim is the only config i felt the need to add here
 ## Neovim:
-Much inspired from @theprimegen, plus my prefered window/tabs/ terminal managment plugins, yes i don't use a multiplexer (YET!),
-Feel free to tweek it for your own preferences. - use telescope grep word "leader + ps" then type "REMAP" or "remap" or "set(" to try and find the relative keys for each functionality.
-# Configuration.nix:
-It should start as a very basic configuration.nix file, im not using the home-manager stuff just yet, i want to first only use configuration.nix to learn more about the nixOS/nix language, and the nix ecosystem.
+Much inspired from the one and only [theprimegen](https://github.com/theprimeagen), plus my personal preferences, plugins and configurations.
+# nixos:
+Its quite self-explanatory as i tried to use modular structure.
+## Flakes:
+Currently its this simple , i dont know about all flakes semantics but these are the reasons im using flakes:
+- Declarative version pinning of the nixpkgs inputs
+- Cherry-picking different inputs for different packages (very handy in case "unstable" breaks something)
 ## Useful docs:
 [NixManual](https://nixos.org/manual/nixos/stable/) - [NixWiki](https://nixos.wiki/wiki/Main_Page)
