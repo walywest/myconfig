@@ -38,7 +38,6 @@ return {
                 end,
             },
 
-
             live_filter = {
                 prefix = "[FILTER]: ",
                 always_show_folders = false, -- Turn into false from true by default
@@ -52,8 +51,13 @@ return {
                 group_empty = true,
             },
             filters = {
-                custom = { "^.git$" }
-                --  dotfiles = true,
+                custom = { "^.git$", "^__pycache__$" }, -- Now filters out both .git and __pycache__
+                -- dotfiles = true, -- (Uncomment if you also want to hide all dotfiles)
+            },
+            git = {
+                enable = true,             -- Enables Git integration (shows Git status icons)
+                ignore = false,            -- If false, shows files ignored by .gitignore
+                timeout = 400,             -- Time (ms) to wait for Git status
             }
         }
     end,

@@ -36,4 +36,17 @@ vim.opt.laststatus = 3
 
 vim.o.winblend = 50
 
+function _G.statusLine()
+    return vim.g.flutter_tools_decorations.app_version
+end
+
+vim.opt.statusline = '%!v:statusLine()'
+
 --vim.opts.rocks.enabled = false
+-- Animated smooth scrolling
+vim.opt.smoothscroll = true
+vim.keymap.set('n', '<ScrollWheelUp>', '5<C-Y>', { noremap = true, silent = true })
+vim.keymap.set('n', '<ScrollWheelDown>', '5<C-E>', { noremap = true, silent = true })
+
+
+ -- blink.cmp  Falling back to Lua implementation due to error while downloading pre-built binary, set fuzzy.implementation to  "prefer_rust"  or  "lua"  to disable this warning. See :messages for details.

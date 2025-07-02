@@ -42,8 +42,11 @@ return
             direction = 'float',
             close_on_exit = true,     -- close the terminal window when the process exits
             -- Change the default shell. Can be a string or a function returning a string
-            --shell = vim.o.shell,
-            auto_scroll = true, -- automatically scroll to the bottom on terminal output
+            shell = vim.fn.exepath("zsh"), -- Absolute path to Zsh
+            -- Optional: Add args to ensure Zsh loads your configs
+            -- shell_args = { "-l" }, -- Login shell (loads .zprofile, .zshrc)
+
+            auto_scroll = true,  -- automatically scroll to the bottom on terminal output
             -- This field is only relevant if direction is set to 'float'
             float_opts = {
                 -- The border key is *almost* the same as 'nvim_open_win'

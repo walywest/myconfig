@@ -14,8 +14,8 @@ local themes = {
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
                 --style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-                style = "night",     -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-                transparent = false, -- Enable this to disable setting the background color
+                style = "night",         -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+                transparent = false,     -- Enable this to disable setting the background color
                 -- terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
                 styles = {
                     -- Style to be applied to different syntax groups
@@ -23,26 +23,26 @@ local themes = {
                     comments = { italic = false },
                     keywords = { italic = false },
                     -- Background styles. Can be "dark", "transparent" or "normal"
-                    sidebars = "dark", -- style for sidebars, see below
-                    floats = "dark",   -- style for floating windows
+                    sidebars = "dark",     -- style for sidebars, see below
+                    floats = "dark",       -- style for floating windows
                 },
             })
             vim.cmd("colorscheme tokyonight")
             ColorMyPencils("tokyonight")
         end
     },
-
     {
+
         "rose-pine/neovim",
         name = "rose-pine",
         config = function()
             require('rose-pine').setup({
                 disable_background = true,
             })
-            vim.cmd("colorscheme rose-pine")
             ColorMyPencils()
         end
     },
+
     {
         'navarasu/onedark.nvim',
         -- Lua
@@ -53,10 +53,10 @@ local themes = {
                 transparent = false -- Enable this to disable setting the background color
             }
             require('onedark').load()
-            -- ColorMyPencils('onedark')
+            ColorMyPencils('onedark')
         end
     },
-    -- Lazy
+
     {
         "olimorris/onedarkpro.nvim",
         priority = 1000, -- Ensure it loads first
@@ -68,14 +68,10 @@ local themes = {
         end
     }
 
-    -- somewhere in your config:
-
-
 }
 
 -- NOTE: theme : 1- folke folke, 2- rose-pine, 3- onedark, 4- onedarkpro
 
 return {
-    themes[3]
-
+    themes[2]
 }

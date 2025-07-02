@@ -11,7 +11,7 @@
   # services.k3s.enable = true;
   imports = [
     # Include the results of the hardware scan.
-    ./modules/all.nix
+    ./modules/includes.nix
   ];
   nix.settings.trusted-users = ["root" "dumbledoor"];
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -86,9 +86,6 @@
     description = "Dumbledoor";
     extraGroups = ["networkmanager" "wheel"];
   };
-  programs.git = {
-    enable = true;
-  };
 
   # programs.appimage.enable = true;
 
@@ -115,7 +112,7 @@
     # disk utilities
     gparted
     # bootable usb solution
-    ventoy-full
+    # ventoy-full
     # debugging and profiling
     valgrind
     # terminal filemanager
@@ -144,16 +141,15 @@
     lua
     luajitPackages.luarocks_bootstrap #luarocks in3lbo lismak sa3tayn wana kan9lb 3liha b9
     pnpm
-    nodejs_23
+    nodejs_24
     # SDKs for mobile dev
-    flutter327
-    android-studio
+    # flutter327
+    # android-studio
     #
     # recording
     obs-studio
     # browser
     brave
-    google-chrome
     # security
     vulnix
     # Network
@@ -165,16 +161,11 @@
     foliate
     obsidian
     # terminals
-    # blackbox
-    alacritty
+    kitty
     ghostty
-    # Common
+    # essential
     zoxide
-    # editors
-    # zed-editor
     neovim
-    plemoljp-nf # nerdfonts for neovim icons
-    # nerd-fonts
     # GUI for neovim
     neovide
     # needed by telescope
@@ -197,8 +188,6 @@
     packer
     # token generation
     openssl
-    # environments
-    devenv
     # testing
     postman
     #hardware listing
@@ -212,6 +201,11 @@
     edid-decode # Decodes EDID (panel model/serial)
     xorg.xrandr # Screen resolution/refresh rate
     ddcutil # External monitor control (if supported)
+    # database
+    postgresql
+    pgadmin4-desktopmode
+    #Community Cached Binaries
+    # cachix
   ];
 
   # This value determines the NixOS release from which the default

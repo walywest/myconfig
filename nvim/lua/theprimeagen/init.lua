@@ -3,24 +3,14 @@ require("theprimeagen.remap")
 
 require("theprimeagen.lazy_init")
 
--- DO.not
--- DO NOT INCLUDE THIS
-
--- If i want to keep doing lsp debugging
--- function restart_htmx_lsp()
---     require("lsp-debug-tools").restart({ expected = {}, name = "htmx-lsp", cmd = { "htmx-lsp", "--level", "DEBUG" }, root_dir = vim.loop.cwd(), });
--- end
-
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
--- function R(name)
---     require("plenary.reload").reload_module(name)
--- end
 
+--NOTE: YANK HIGHLIGHTING
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -32,6 +22,7 @@ autocmd('TextYankPost', {
     end,
 })
 
+--NOTE: LSP TOOLS:
 autocmd('LspAttach', {
     group = ThePrimeagenGroup,
     callback = function(e)
@@ -49,19 +40,15 @@ autocmd('LspAttach', {
     end
 })
 
--- autocmd('TabNewEntered', {
---     group = ThePrimeagenGroup,
---     callback = function()
---         -- if vim.g.manual_action then
---         --     return
---         -- end
---         require('telescope.builtin').find_files()
---     end
--- })
---
-
 
 
 vim.g.netrw_browse_split = 0
---vim.g.netrw_banner = 0
---vim.g.netrw_winsize = 25
+
+--NOTE: LAZYDEV:
+require("lazydev").setup({
+    library = { "nvim-dap-ui" },
+})
+
+--NOTE: AUGMENT:
+-- vim.g.augment_workspace_folders = { '/home/dumbledoor/Desktop/matcha' }
+-- vim.api.nvim_set_keymap('i', '<CR>', [[<cmd>call augment#Accept("\n")<CR>]], { noremap = true })

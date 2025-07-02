@@ -17,9 +17,9 @@ vim.g.neovide_cursor_trail_size= 0.1
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust" 
 
 --//NOTE: testing this config
--- vim.g.neovide_transparency = 1
--- vim.g.transparency = 0
---/vim.g.neovide_background_color = ("#0f1117" .. string.format("%x", math.floor(((255 * vim.g.transparency) or 0.5))))
+vim.g.neovide_opacity= 0.9
+-- vim.g.neovide_normal_opacity = 0.8
+-- vim.g.neovide_background_color = ("#0f1117" .. string.format("%x", math.floor(((255 * vim.g.transparency) or 0.5))))
 
 if vim.g.neovide == true then
     -- vim.cmd 'set guifont=Hack\ NF:h10'
@@ -29,5 +29,4 @@ if vim.g.neovide == true then
     vim.api.nvim_set_keymap('n', '<F11>', ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
 end
 
---//NOTE: neovide_blure
 -- vim.g.neovide_window_blurred = true

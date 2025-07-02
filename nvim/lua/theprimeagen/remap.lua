@@ -79,20 +79,8 @@ end)
 --//NOTE: REMAPS FOR NVIMTREE
 vim.keymap.set({ "n" }, "<leader>o", ":NvimTreeFindFile<CR>")
 
--- NOTE: POMMODORO-NVIM
--- local function pc(func)
---     return ":lua require('pommodoro-clock')." .. func .. "<CR>"
--- end
--- p = {
---     name = "Pommodoro",
---     w = { pc('start("work")'), "Start Pommodoro" },
---     s = { pc('start("short_break")'), "Short Break" },
---     l = { pc('start("long_break")'), "Long Break" },
---     p = { pc("toggle_pause()"), "Toggle Pause" },
---     c = { pc("close()"), "Close" },
--- }
--- vim.keymap.set("n", "`pw", p.w[1])
--- vim.keymap.set("n", "`ps", p.s[1])
--- vim.keymap.set("n", "`pl", p.l[1])
--- vim.keymap.set("n", "`pp", p.p[1])
--- vim.keymap.set("n", "`pc", p.c[1])
+local function cf()
+    return ":lua require('telescope').extensions.flutter.commands()<CR>"
+
+end
+vim.keymap.set({ "n" }, "<leader>cf", cf())

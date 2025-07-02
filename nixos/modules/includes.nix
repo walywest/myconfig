@@ -2,6 +2,10 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ./git.nix
+        ./cachix.nix
+        ./fonts.nix
+        ./window_sys.nix
         ./fhs.nix
         ./networking.nix
         ./kubernetes.nix
@@ -12,7 +16,11 @@
         ./custom_k3d.nix
         ./custom_helm.nix
         ./nixd.nix
-        #TODO:
-        # ./custom_helm.nix
+        ./giming.nix
+        ./postgresql.nix
+        ./java.nix
+        ./dev_env.nix
+        ./appImageSupport.nix
+        # ./safety.nix
         ];
 }

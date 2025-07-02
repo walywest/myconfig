@@ -15,3 +15,6 @@ require("lazy").setup({
     spec = "theprimeagen.lazy",
     change_detection = { notify = false }
 })
+-- require("lazydev").setup({
+--     library = { "nvim-dap-ui" },
+-- })
