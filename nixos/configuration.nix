@@ -160,9 +160,6 @@
     discord
     foliate
     obsidian
-    # terminals
-    kitty
-    ghostty
     # essential
     zoxide
     neovim

@@ -1,11 +1,9 @@
 {
   pkgs,
-  pkgs-stable,
-  config,
   inputs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    google-chrome
+  environment.systemPackages = with inputs.browser-previews.packages.${pkgs.system}; [
+    google-chrome # Stable Release
   ];
 }
