@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
-    devenv.url = "github:cachix/devenv/v1.6.1";
+    # devenv.url = "github:cachix/devenv/v1.6.1";
     # Browser previews flake for Chrome variants
     browser-previews = {
       url = "github:nix-community/browser-previews";

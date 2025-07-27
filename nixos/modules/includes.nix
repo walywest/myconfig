@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 {
     imports = [
+        ./core.nix
         ./hardware-configuration.nix
         ./git.nix
         ./cachix.nix

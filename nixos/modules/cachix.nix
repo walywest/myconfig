@@ -16,5 +16,6 @@
 
     # Allow these users to add more substituters at runtime
     trusted-users = ["root"];
+
   };
 }
