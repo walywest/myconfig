@@ -1,2 +1,0 @@
-require("neovide")
-require("theprimeagen")
