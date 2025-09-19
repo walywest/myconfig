@@ -22,6 +22,7 @@
         ./java.nix
         ./dev_env.nix
         ./appImageSupport.nix
+        ./de.nix
         # ./safety.nix
         ];
 }

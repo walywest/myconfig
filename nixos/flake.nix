@@ -8,12 +8,17 @@
       url = "github:nix-community/browser-previews";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    #NOTE: SNAPD
+    nix-snapd.url = "github:nix-community/nix-snapd";
+    nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
     self,
     nixpkgs,
     nixpkgs-stable,
+    nix-snapd,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -25,6 +30,11 @@
         };
       };
       modules = [
+        #NOTE: snapD
+        nix-snapd.nixosModules.default
+        {
+          services.snap.enable = true;
+        }
         ./configuration.nix
         ./flakes/bluetooth.nix
         ./flakes/chrome.nix

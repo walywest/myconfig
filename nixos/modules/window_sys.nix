@@ -3,5 +3,6 @@
   pkgs,
   ...
 }: {
-  services.picom.enable = true;
+  #FIX:  picom compositor not compatible with KWin
+  # services.picom.enable = true;
 }

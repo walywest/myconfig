@@ -1,10 +1,20 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # vscodium
-    # cargo
+    imagemagick
+    #NOTE:VPN
+    protonvpn-gui
+    cargo
+    #NOTE: Video
+    vlc
+    #NOTE: PDF REPAIR tools
+    # ghostscript
+    # qpdf
+    # icu
+    #NOTE: DEV ENVIRONMENT
     devenv
+    notejot
     # boot entries listing
-    efibootmgr
+    # efibootmgr
     # disk utilities
     gparted
     # bootable usb solution
@@ -15,7 +25,6 @@
     yazi-unwrapped
     # cmd tools
     lsof
-    porsmo
     libnotify
     fd # simple fast alternative to find
     eza # ls with steroids
@@ -32,7 +41,6 @@
     #Linters
     # ruff
     # Languages
-    zig
     python3
     lua
     luajitPackages.luarocks_bootstrap #luarocks in3lbo lismak sa3tayn wana kan9lb 3liha b9
@@ -43,18 +51,17 @@
     # android-studio
     #
     # recording
-    obs-studio
     # browser
     brave
     # security
-    vulnix
     # Network
     # haskellPackages.hellnet
     # essential GUI apps
     telegram-desktop
     spotify
     discord
-    foliate
+    #NOTE: books
+    # foliate
     obsidian
     # essential
     zoxide
@@ -65,7 +72,7 @@
     ripgrep
     xclip
     tree-sitter
-    vim # not sure lol
+    vim
     # Compilers and build tools
     clang
     gcc
@@ -73,7 +80,7 @@
     cmake
     gnumake
     # NOTE: DISK USAGE STATISTICS
-    libsForQt5.filelight
+    kdePackages.filelight
     #NOTE: VMs images management/deployment/creation
     # vagrant
     packer
@@ -82,16 +89,16 @@
     # testing
     postman
     #hardware listing
-    dmidecode # BIOS/motherboard/RAM/CPU serials
-    lshw # Hardware topology (JSON)
-    inxi # Human-friendly summary
-    util-linux # lsblk
-    pciutils # lspci
-    smartmontools # smartctl
-    jq # JSON processing
-    edid-decode # Decodes EDID (panel model/serial)
-    xorg.xrandr # Screen resolution/refresh rate
-    ddcutil # External monitor control (if supported)
+    #dmidecode # BIOS/motherboard/RAM/CPU serials
+    #lshw # Hardware topology (JSON)
+    #inxi # Human-friendly summary
+    #util-linux # lsblk
+    #pciutils # lspci
+    #smartmontools # smartctl
+    #jq # JSON processing
+    #edid-decode # Decodes EDID (panel model/serial)
+    #xorg.xrandr # Screen resolution/refresh rate
+    #ddcutil # External monitor control (if supported)
     # database
     postgresql
     pgadmin4-desktopmode

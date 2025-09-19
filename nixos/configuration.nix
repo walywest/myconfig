@@ -46,9 +46,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -94,11 +91,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   # environment.homeBinInPath = true;
-  programs.kdeconnect.enable = true;
+  programs.kdeconnect.enable = false;
   #Note: Another reason to use GNOME
   # Uncomment the next 2 lines if you're not using GNOME
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  xdg.portal.config.common.default = "gtk";
 
   # enable flatpack currently only using zen_browser package
   services.flatpak.enable = true;

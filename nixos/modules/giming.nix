@@ -14,9 +14,9 @@
 }: {
   # Enable 32-bit libraries for games
   # This is crucial for many games, especially those run through Wine/Proton
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
 
     # Enable Vulkan support
     extraPackages = with pkgs; [
@@ -45,6 +45,10 @@
     # DualShock 4 over bluetooth
     KERNEL=="hidraw*", KERNELS=="*054C:05C4*", MODE="0666"
   '';
+  #NOTE: BLUETOOTH
+  # ADD these new lines for Bluetooth input:
+  boot.extraModulePackages = with config.boot.kernelPackages; [xpadneo];
+  boot.kernelModules = ["hid-playstation"];
 
   # Install essential gaming tools and libraries
   environment.systemPackages = with pkgs; [
