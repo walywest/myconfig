@@ -43,6 +43,16 @@
     };
   };
 
+  # X11 configuration moved to modules/de.nix to avoid conflicts
+  # services.xserver.enable is now managed in the DE module
+  
+  # Memory management improvements
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10; # Reduce swap usage
+    "vm.vfs_cache_pressure" = 50; # Keep more directory/inode cache
+  };
+
+
   # Configure keymap for console (works for both X11 and Wayland)
   console.keyMap = "us";
 

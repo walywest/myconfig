@@ -18,15 +18,20 @@
     enable = true;
     enable32Bit = true;
 
-    # Enable Vulkan support
+    # Enable Vulkan support for Intel graphics
     extraPackages = with pkgs; [
+      intel-media-driver # For newer Intel GPUs (Broadwell+)
+      intel-vaapi-driver # For older Intel GPUs
       vulkan-loader
       vulkan-validation-layers
       vulkan-extension-layer
+      intel-compute-runtime # OpenCL support
     ];
 
-    # 32-bit support for Vulkan
+    # 32-bit support for Vulkan and Intel drivers
     extraPackages32 = with pkgs.pkgsi686Linux; [
+      intel-media-driver
+      intel-vaapi-driver
       vulkan-loader
     ];
   };
@@ -98,7 +103,7 @@
       gpu = {
         apply_gpu_optimisations = "accept-responsibility";
         gpu_device = 0;
-        amd_performance_level = "high"; # For AMD GPUs
+        # Removed AMD-specific settings for Intel hardware
       };
 
       custom = {

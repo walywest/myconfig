@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     imagemagick
+    glxinfo # Graphics info and glxgears for testing
     #NOTE:VPN
     protonvpn-gui
     cargo
