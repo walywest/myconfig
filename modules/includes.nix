@@ -23,6 +23,7 @@
         ./dev_env.nix
         ./appImageSupport.nix
         ./de.nix
+        ./iso-boot.nix
         # ./safety.nix
         ];
 }

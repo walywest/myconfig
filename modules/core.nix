@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    rio
     imagemagick
     glxinfo # Graphics info and glxgears for testing
     #NOTE:VPN
