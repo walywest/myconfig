@@ -17,7 +17,7 @@ return
                     return vim.o.columns * 0.4
                 end
             end,
-            open_mapping = [[`[]],
+            open_mapping = "`[",
 
             --highlights = {
             --    -- highlights which map to a highlight group name and a table of it's values
