@@ -1,0 +1,41 @@
+{config, pkgs, ...}: 
+{
+  environment.systemPackages = with pkgs; [
+    zsh
+    obsidian
+    python3
+    notejot
+    zoxide
+    xclip
+    unzip
+    tree-sitter
+    fd
+    fzf
+    gnumake
+    ripgrep
+    lua
+    luajitPackages.luarocks_bootstrap
+    neovim
+    kdePackages.dolphin
+    yazi
+    wofi
+    snipaste
+    hyprland
+    wget
+    foot
+    waybar
+    cachix
+    nushell
+    wev
+    direnv
+    devenv
+    brave
+    vscode
+    vim
+    zoom-us
+    git
+    clang
+    gcc
+    hyprpaper
+  ];
+}
