@@ -1,0 +1,16 @@
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./common.nix
+    ./personal.nix
+    ./dev.nix
+    ./nix.nix
+    ./cache-server.nix
+    ./giming.nix
+  ];
+}

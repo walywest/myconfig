@@ -1,0 +1,42 @@
+{pkgs, ...}: {
+  services.power-profiles-daemon.enable = true;
+  environment.systemPackages = with pkgs; [
+    macchina
+    parted
+    dig
+    curl
+    obsidian
+    zsh
+    python3
+    xclip
+    unzip
+    tree-sitter
+    fd
+    fzf
+    gnumake
+    ripgrep
+    lua
+    luajitPackages.compat53
+    luajitPackages.luarocks_bootstrap
+    kdePackages.dolphin
+    yazi
+    wofi
+    rofi
+    snipaste
+    hyprland
+    wget
+    foot
+    waybar
+    cachix
+    nushell
+    wev
+    vim
+    git
+    clang
+    gcc
+    hyprpaper
+    htop
+    btop
+    bottom
+  ];
+}
