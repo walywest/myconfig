@@ -1,3 +1,4 @@
+vim.opt.syntax = "on"
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
