@@ -61,7 +61,7 @@
 
   time.timeZone = "Morocco/Casablanca";
 
-  environment.shells = with pkgs; [bash zsh];
+  environment.shells = with pkgs; [bash zsh ];
   users.users.dumbledoor = {
     isNormalUser = true;
     shell = pkgs.zsh;

@@ -10,7 +10,8 @@
     ./personal.nix
     ./dev.nix
     ./nix.nix
-    ./cache-server.nix
-    ./giming.nix
+    # ./cache-server.nix
+    # ./giming.nix
+    ./networking.nix
   ];
 }

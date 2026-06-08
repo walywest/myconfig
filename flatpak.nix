@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
   services.flatpak = {
+    update.onActivation = true;
     update.auto = {
       enable = true;
       onCalendar = "weekly"; # Default value
@@ -16,7 +17,8 @@
       "com.getpostman.Postman"
       "com.gopeed.Gopeed"
       "org.jdownloader.JDownloader"
-      "com.heroicgameslauncher.hgl"
+      "com.rustdesk.RustDesk"
+      # "com.heroicgameslauncher.hgl"
     ];
     uninstallUnmanaged = true;
 

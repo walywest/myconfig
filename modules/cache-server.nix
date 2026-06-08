@@ -9,5 +9,5 @@
   };
 
   # Open the default port 5000 in the firewall
-  networking.firewall.allowedTCPPorts = [ 5000 ];
+  # networking.firewall.allowedTCPPorts = [ 5000 ];
 }
