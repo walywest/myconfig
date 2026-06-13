@@ -1,0 +1,2 @@
+# Allow unfree packages (e.g. claude-code) in this devenv shell by default.
+allowUnfree: true
