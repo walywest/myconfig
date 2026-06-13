@@ -4,6 +4,16 @@
   nix = {
     optimise.automatic = true;
 
+    # GitHub auth for flake input fetches (raises the anonymous 60 req/hr API
+    # limit to 5000). The token is kept OUT of the Nix store / git: only this
+    # !include directive is rendered into /etc/nix/nix.conf; the secret lives in
+    # a root-owned 0600 file you create by hand:
+    #   sudo install -m 0600 /dev/null /etc/nix/access-tokens.conf
+    #   echo 'access-tokens = github.com=ghp_xxx' | sudo tee /etc/nix/access-tokens.conf
+    extraOptions = ''
+      !include /etc/nix/access-tokens.conf
+    '';
+
     gc = {
       automatic = true;
       dates = "weekly";
