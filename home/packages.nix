@@ -8,6 +8,12 @@
   programs.man.enable = true;
   home.packages = with pkgs; [
     neovim
+
+    # --- Network UI ---
+    networkmanagerapplet  # nm-applet (tray) + nm-connection-editor (waybar on-click)
+    networkmanager_dmenu  # rofi-driven Wi-Fi picker, bound to SUPER+N
+    libnotify             # notify-send, used by the Hyprland volume/brightness binds
+
     # #added this for man pages
     # docker
     # # localsend

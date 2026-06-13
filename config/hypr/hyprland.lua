@@ -21,7 +21,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd(terminal)
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("nm-applet")
+    hl.exec_cmd("nm-applet --indicator")
 end)
 
 -- ENVIRONMENT VARIABLES
@@ -127,6 +127,7 @@ hl.bind(alt .. " + E",      hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V",  hl.dsp.window.float({ action = "toggle" }))
 hl.bind(alt .. " + SPACE",  hl.dsp.exec_cmd(menu))
 hl.bind(alt .. " + B",      hl.dsp.exec_cmd(bluetooth))
+hl.bind(mainMod .. " + N",  hl.dsp.exec_cmd("networkmanager_dmenu"))
 hl.bind(alt .. " + G",      hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + P",  hl.dsp.window.pseudo())
 
