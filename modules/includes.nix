@@ -10,6 +10,7 @@
     ./personal.nix
     ./dev.nix
     ./nix.nix
+    ./secrets.nix
     # ./cache-server.nix
     # ./giming.nix
     ./networking.nix
