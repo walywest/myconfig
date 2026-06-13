@@ -59,7 +59,7 @@
   networking.networkmanager.enable = true;
   networking.nameservers = ["1.1.1.1" "8.8.8.8"];
 
-  time.timeZone = "Morocco/Casablanca";
+  time.timeZone = "Africa/Casablanca";
 
   environment.shells = with pkgs; [bash zsh ];
   users.users.dumbledoor = {

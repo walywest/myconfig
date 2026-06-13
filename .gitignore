@@ -1,1 +1,8 @@
 hardware-configuration.nix
+
+# devenv / direnv build artifacts
+.devenv/
+.direnv/
+
+# editor / AI tooling
+.kiro/
