@@ -5,7 +5,7 @@ return {
     config = function()
         local dapython, dap = require("dap-python"), require("dap")
         dapython.test_runner = "pytest"
-        dapython.setup("/home/dumbledoor/.local/share/nvim/mason/bin/debugpy-adapter")
+        dapython.setup(vim.fn.stdpath("data") .. "/mason/bin/debugpy-adapter")
         table.insert(dap.configurations.python, {
             type = 'python',
             request = 'attach',

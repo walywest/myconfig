@@ -1,4 +1,7 @@
 vim.g.mapleader = " "
+vim.keymap.set("n", "`w", [[:%s/\r//g<CR>]], {
+  desc = "Remove ^M carriage returns",
+})
 
 vim.keymap.set("n", "[n", ":noh<CR>")
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)

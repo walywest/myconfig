@@ -1,3 +1,5 @@
+vim.opt.fileformats = { "unix", "dos" }
+vim.opt.fileformat = "unix"
 vim.opt.syntax = "on"
 vim.opt.guicursor = ""
 
@@ -28,6 +30,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+vim.opt.timeoutlen = 300
+vim.opt.ttimeoutlen = 10
 
 vim.opt.colorcolumn = "80"
 

@@ -124,9 +124,7 @@ return {
         })
 
         vim.diagnostic.config({
-
-            --//NOTE: tbh idk why added those too
-            update_in_insert = true,
+            update_in_insert = false,
             virtual_text = true,
 
             float = {
