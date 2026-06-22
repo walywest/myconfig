@@ -11,6 +11,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "onsails/lspkind.nvim",
     },
 
     config = function()
@@ -95,6 +96,16 @@ return {
                 ['<tab>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
+            formatting = {
+                format = require("lspkind").cmp_format({
+                    mode = "symbol_text",
+                    maxwidth = 50,
+                    ellipsis_char = "...",
+                    symbol_map = {
+                        Copilot = "",
+                    },
+                }),
+            },
             sources = cmp.config.sources({
                 -- { name = "copilot",   group_index = 2 },
                 { name = 'nvim_lsp', group_index = 2 },
