@@ -49,6 +49,14 @@ return {
             },
             renderer = {
                 group_empty = true,
+                icons = {
+                    show = {
+                        file = true,
+                        folder = true,
+                        folder_arrow = true,
+                        git = true,
+                    },
+                },
             },
             filters = {
                 custom = { "^.git$", "^__pycache__$" }, -- Now filters out both .git and __pycache__
