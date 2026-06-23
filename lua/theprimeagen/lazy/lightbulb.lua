@@ -3,6 +3,10 @@ return {
     event = "LspAttach",
     opts = {
         autocmd = { enabled = true, updatetime = 0 },
+        ignore = {
+            ft = { "NvimTree", "lazy", "mason", "help", "trouble" },
+            bo = { buftype = { "nofile", "terminal", "prompt" } },
+        },
         sign = {
             enabled = true,
             text = "󰌶",
