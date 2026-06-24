@@ -5,23 +5,22 @@ return {
     config = function()
         require("bufferline").setup({
             options = {
-                mode = "buffers",
+                mode = "tabs",
                 numbers = "none",
-                close_command = "bdelete %d",
-                right_mouse_command = "bdelete %d",
-                left_mouse_command = "buffer %d",
-                indicator = { style = "icon", icon = "▎" },
-                buffer_close_icon = "󰅖",
+                indicator = { style = "underline" },
                 modified_icon = "●",
-                close_icon = "",
-                left_trunc_marker = "",
-                right_trunc_marker = "",
-                show_buffer_close_icons = true,
+                show_buffer_close_icons = false,
                 show_close_icon = false,
-                show_tab_indicators = true,
-                persist_buffer_sort = true,
+                show_buffer_icons = true,
+                color_icons = true,
                 separator_style = "thin",
                 always_show_bufferline = true,
+                left_mouse_command = function(id)
+                    vim.api.nvim_set_current_tabpage(id)
+                end,
+                close_command = function(id)
+                    vim.cmd("tabclose " .. vim.api.nvim_tabpage_get_number(id))
+                end,
                 offsets = {
                     {
                         filetype = "NvimTree",
@@ -32,8 +31,5 @@ return {
                 },
             },
         })
-
-        vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>")
-        vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>")
     end,
 }
